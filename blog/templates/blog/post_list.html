@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY SITE</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
+
+{% block content %}
     <div>
-        <h1><a href="/">Django Girls My Blog</a></h1>
+        <h3 style="margin-bottom: 30px;">today: {{ today }}</h3>
     </div>
-
     {% for post in posts %}
-        <div>
-            <p>公開日： {{ post.published_date }}</p>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+    <div class="post">
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <div class="date">
+            公開日：{{ post.published_date }}
         </div>
+    </div>
     {% endfor %}
-
-</body>
-</html>
-
+{% endblock %}
