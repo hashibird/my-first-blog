@@ -7,7 +7,7 @@
     </div>
     {% for post in posts %}
     <div class="card mb-4" style="width: 50%;">
-        <div class="card-body pl-5">
+        <div class="card-body pl-4">
             <h2 class="card-title mb-4" style="border-bottom:1px solid gray;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p class="card-text mb-5">{{ post.text|linebreaksbr }}</p>
             <p>公開日：{{ post.published_date }}</p>
