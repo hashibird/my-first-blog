@@ -1,3 +1,7 @@
+a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.726);
+}
 .page-header {
     background-color: #0d00c2;
     margin-top: 0;
@@ -10,22 +14,27 @@
     text-decoration: none;
 }
 
-.content {
-    margin-left: 40px;
+.body-content {
+    margin-left: 35px;
+    margin-right: 35px;
 }
 
 h1, h2, h3, h4 {
+    font-size: 30px;
     font-family:'メイリオ', 'Lobster', cursive;
 }
 
+p{
+    font-size: 20px;
+}
 .date {
     color: #767080;
     font-size: 1.3em;
-    float: right;
+    /* float: left; */
 }
 
 .save {
-    float: right;
+    /* float: left; */
 }
 
 .post-form textarea, .post-form input {

@@ -1,15 +1,16 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<h1 style="margin-bottom:20px; border-bottom:2px solid gray;">すべての記事</h1>
     <div>
         <h3 style="margin-bottom: 30px;">today: {{ today }}</h3>
     </div>
     {% for post in posts %}
-    <div class="post">
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-        <div class="date">
-            公開日：{{ post.published_date }}
+    <div class="card mb-4" style="width: 50%; height:150px;">
+        <div class="card-body pl-5">
+            <h2 class="card-title mb-4" style="border-bottom:1px solid gray;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p class="card-text mb-5">{{ post.text|linebreaksbr }}</p>
+            <p>公開日：{{ post.published_date }}</p>
         </div>
     </div>
     {% endfor %}

@@ -1,9 +1,14 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
+    {% if new %}
+        <h1 style="margin-bottom:20px; border-bottom:2px solid gray;">新規投稿</h1>
+    {% else %}
+        <h1 style="margin-bottom:20px; border-bottom:2px solid gray;">編集ページ</h1>
+    {% endif %}
     <form method='POST'>{% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="save btn btn-default">Save</button>
+    <button type="submit" class="save btn btn-default btn-lg">Save</button>
     </form>
 {% endblock content %}
 
