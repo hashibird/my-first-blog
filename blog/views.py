@@ -59,5 +59,6 @@ def post_publish(request, pk):
 
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.delete()
+    post.published_date = timezone.datetime.now() + timezone.timedelta(weeks=100)
+    post.save()
     return redirect('post_list')
