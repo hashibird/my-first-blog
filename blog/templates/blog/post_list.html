@@ -10,6 +10,7 @@
             <h2 class="card-title mb-4" style="border-bottom:1px solid gray;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p class="card-text mb-5">{{ post.text|linebreaksbr }}</p>
             <p class="pub-date">公開日：{{ post.published_date }}</p>
+            <p><a href="{% url 'post_detail' pk=post.pk %}">Comment : {{ post.approved_comments.count }}</a></p>
         </div>
     {% endfor %}
 {% endblock %}

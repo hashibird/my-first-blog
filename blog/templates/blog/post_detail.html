@@ -17,6 +17,32 @@
                 {% endif %}
             </div>
         </div>
+        <h2 style="margin-top: 15px;">コメント</h2>
+        <hr>
+        <div class="d-grid gap-2">
+            <a class="btn btn-success btn-lg" href="{% url 'add_comment_to_post' pk=post.pk %}"><span>コメント入力</span></a>
+        </div>
+        {% for comment in post.comments.all %}
+            {% if user.is_authenticated or comment.approved_comment %}
+                <hr>
+                <div class="comment">
+                    <p>{{ comment.created_date }}</p>
+                    <h2><strong>{{ comment.name }}</strong></h2>
+                    <p>{{ comment.text|linebreaksbr }}</p>
+                    {% if user.is_authenticated %}                        
+                        {% if not comment.approved_comment %}
+                            <a class="btn btn-primary btn-lg" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-pencil">公開する</span></a>
+                        {% else %}
+                            <a class="btn btn-danger btn-lg" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glypgicon glyphicon-remove">非公開にする</span></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <hr>
+            {% endif %}
+        {% empty %}
+            <hr>
+            <h2>コメントはまだありません...</h2>
+        {% endfor %}
     {% else %}
         <div>
             <h3 class="alert alert-warning">この記事は非公開です！</h3>

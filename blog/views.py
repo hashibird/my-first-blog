@@ -2,8 +2,8 @@ from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.db.models import Q
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 import datetime
 # Create your views here.
 
@@ -62,3 +62,32 @@ def post_remove(request, pk):
     post.published_date = timezone.datetime.now() + timezone.timedelta(weeks=100)
     post.save()
     return redirect('post_list')
+
+def add_comment_to_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        Comment.name = 'anonymous'
+        Comment.text = ''
+        form = CommentForm(instance=Comment)
+    return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+# @login_required
+def comment_approve(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approve()
+    return redirect('post_detail', pk=comment.post.pk)
+
+# @login_required
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approved_comment = False
+    comment.save()
+    return redirect('post_detail', pk=comment.post.pk)
+
