@@ -1,3 +1,5 @@
+
+
 a{
     text-decoration: none;
     color: rgba(0, 0, 0, 0.726);
@@ -14,14 +16,20 @@ a{
     text-decoration: none;
 }
 
-/* .body-content {
+.body-content {
     margin-left: 35px;
     margin-right: 35px;
-} */
+}
 
-h1, h2, h3, h4 {
+h1{
     font-size: 30px;
+    font-weight: bold;
+}
+
+h2, h3, h4 {
+    font-size: 25px;
     font-family:'メイリオ', 'Lobster', cursive;
+    font-weight: bold;
 }
 
 p{
@@ -52,3 +60,4 @@ p{
 .post h2 a, .post h2 a:visited {
     color: #000000;
 }
+
