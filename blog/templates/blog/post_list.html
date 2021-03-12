@@ -6,7 +6,7 @@
         <h3 style="margin-bottom: 30px;">today: {{ today }}</h3>
     </div>
     {% for post in posts %}
-        <div class="card mb-4" style="width: 70%; padding-left: 15px; padding-top: 15px;">
+        <div class="card mb-4" style="width: 80%; padding-left: 15px; padding-top: 15px;">
             <h2 class="card-title mb-4" style="border-bottom:1px solid gray;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p class="card-text mb-5">{{ post.text|linebreaksbr }}</p>
             <p class="pub-date">公開日：{{ post.published_date }}</p>

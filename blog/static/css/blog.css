@@ -1,4 +1,7 @@
 
+li{
+    list-style: none;
+}
 
 a{
     text-decoration: none;
@@ -67,4 +70,28 @@ p{
 
 hr{
     margin-top: 20px;
+}
+
+footer{
+    padding: 10px 0px 0px 16px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.footer-logo h2{
+    float: left;
+    font-size: 30px;
+}
+
+.footer-li{
+    float: right;
+    margin: 0px 40px 0px 0px;
+}
+
+.footer-li p{
+    font-size: 24px;
+}
+
+.card{
+    border:solid 1.5px gray;
 }
