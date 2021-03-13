@@ -8,7 +8,7 @@
     {% for post in posts %}
         <div class="card mb-4" style="width: 80%; padding-left: 15px; padding-top: 15px;">
             <h2 class="card-title mb-4" style="border-bottom:1px solid gray;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p class="card-text mb-5">{{ post.text|linebreaksbr }}</p>
+            <p class="card-text mb-5" style="font-size: 30px;">{{ post.text|slice:":20" }}<span style="color: gray; font-size: 20px;">.....</span><br><a class="continue-btn" style="font-size: 20px;" href="{% url 'post_detail' pk=post.pk %}">続きを見る...</a></p>
             <p class="pub-date">公開日：{{ post.published_date }}</p>
             <p><a href="{% url 'post_detail' pk=post.pk %}">Comment : {{ post.approved_comments.count }}</a></p>
         </div>
